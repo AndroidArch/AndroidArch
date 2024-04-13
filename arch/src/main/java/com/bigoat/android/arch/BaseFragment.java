@@ -49,7 +49,7 @@ public abstract class BaseFragment<Binding extends ViewBinding, ViewModel extend
 
     private ViewModel createViewModel() {
         Class<ViewModel> viewModelClass = getViewModelClass();
-        return new ViewModelProvider(this).get(viewModelClass);
+        return new ViewModelProvider(requireActivity()).get(viewModelClass);
     }
 
     @SuppressWarnings("unchecked")

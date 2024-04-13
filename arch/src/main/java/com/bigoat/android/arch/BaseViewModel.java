@@ -2,7 +2,32 @@ package com.bigoat.android.arch;
 
 import androidx.lifecycle.ViewModel;
 
-public abstract class BaseViewModel extends ViewModel {
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
+public abstract class BaseViewModel<DataSource extends com.bigoat.android.arch.DataSource> extends ViewModel {
+    protected DataSource dataSource;
+
+    protected abstract void myCreate();
+
+    public BaseViewModel() {
+        dataSource = createDataSource();
+    }
+
+    protected DataSource createDataSource() {
+        return DataSourceFactory.get(getDataSourceClass());
+    }
+
+    private Class<DataSource> getDataSourceClass() {
+        Type type = getClass().getGenericSuperclass();
+        ParameterizedType parameterizedType = (ParameterizedType) type;
+        Type[] typeArguments = parameterizedType != null ? parameterizedType.getActualTypeArguments() : new Type[0];
+        if (typeArguments.length == 1) {
+            return (Class<DataSource>) typeArguments[0];
+        } else {
+            throw new RuntimeException("Please configure the correct generic parameters, eg: MyActivity extends BaseActivity<?, ?>");
+        }
+    }
 }
 
 
