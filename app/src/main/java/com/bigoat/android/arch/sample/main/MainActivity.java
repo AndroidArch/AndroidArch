@@ -1,8 +1,6 @@
-package com.bigoat.android.arch.sample;
+package com.bigoat.android.arch.sample.main;
 
-import android.content.Intent;
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 
@@ -14,9 +12,6 @@ public class MainActivity extends BaseActivity<MainActivityBinding, MainViewMode
 
     @Override
     protected void myCreate(@NonNull MainActivityBinding bind, @NonNull MainViewModel vm) {
-        Log.d(TAG, "myCreate: " + this + " " + bind + " " + vm);
-
-        bind.name.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, FragmentActivity.class)));
 
 
         bind.setVm(vm);

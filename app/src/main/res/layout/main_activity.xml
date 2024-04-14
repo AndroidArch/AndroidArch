@@ -7,21 +7,32 @@
     <data>
         <variable
             name="vm"
-            type="com.bigoat.android.arch.sample.MainViewModel" />
+            type="com.bigoat.android.arch.sample.main.MainViewModel" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
+        tools:context=".main.MainActivity"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/hello"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!"
             android:textSize="32dp"
             android:textColor="#ff0000" />
+
+        <EditText
+            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@={vm.city}"
+            android:textSize="21dp"
+            android:gravity="center"
+            android:textColor="#ff0000" />
+
 
         <TextView
             android:id="@+id/name"
@@ -31,8 +42,8 @@
             android:textSize="32dp"
             android:layout_marginTop="10dp" />
 
-        <fragment
-            android:id="@+id/xxxx"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/frag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
