@@ -2,10 +2,12 @@ package com.bigoat.android.arch;
 
 import androidx.lifecycle.ViewModel;
 
+import com.bigoat.android.arch.datasource.DataSourceFactory;
+
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-public abstract class BaseViewModel<DataSource extends com.bigoat.android.arch.DataSource> extends ViewModel {
+public abstract class BaseViewModel<DataSource extends com.bigoat.android.arch.datasource.DataSource> extends ViewModel {
     protected DataSource dataSource;
 
     protected abstract void myCreate();
@@ -15,7 +17,8 @@ public abstract class BaseViewModel<DataSource extends com.bigoat.android.arch.D
     }
 
     protected DataSource createDataSource() {
-        return DataSourceFactory.get(getDataSourceClass());
+        DataSource dd = DataSourceFactory.get(getDataSourceClass());
+        return dd;
     }
 
     private Class<DataSource> getDataSourceClass() {

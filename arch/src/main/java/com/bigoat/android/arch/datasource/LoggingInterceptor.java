@@ -1,4 +1,4 @@
-package com.bigoat.android.arch;
+package com.bigoat.android.arch.datasource;
 
 import okhttp3.Interceptor;
 import okhttp3.Request;

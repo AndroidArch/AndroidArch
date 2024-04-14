@@ -25,13 +25,16 @@ public abstract class BaseActivity<Binding extends ViewDataBinding, ViewModel ex
 
         // 创建视图
         bind = createBinding();
+        bind.setLifecycleOwner(this);
 
         // 创建 ViewModel
         vm = createViewModel();
+        vm.myCreate();
 
         setContentView(bind.getRoot());
 
         myCreate(bind, vm);
+
     }
 
     @SuppressWarnings("unchecked")
