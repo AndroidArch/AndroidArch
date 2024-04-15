@@ -44,6 +44,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/frag"
+            android:name="com.bigoat.android.arch.sample.weather.WeatherFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
