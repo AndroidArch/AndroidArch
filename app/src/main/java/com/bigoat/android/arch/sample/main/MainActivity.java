@@ -13,6 +13,8 @@ public class MainActivity extends BaseActivity<MainActivityBinding, MainViewMode
     @Override
     protected void myCreate(@NonNull MainActivityBinding bind, @NonNull MainViewModel vm) {
 
+        log("myCreate");
+        showToast("myCreate");
 
         bind.setVm(vm);
     }
