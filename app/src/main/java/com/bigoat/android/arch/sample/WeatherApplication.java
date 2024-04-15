@@ -3,6 +3,7 @@ package com.bigoat.android.arch.sample;
 import android.app.Application;
 
 import com.bigoat.android.arch.datasource.DataSourceFactory;
+import com.bigoat.android.arch.sample.data.RemoteDataSource;
 import com.bigoat.android.arch.sample.data.WeatherDataSource;
 
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -13,6 +14,9 @@ public class WeatherApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+//        DataSourceFactory
+//                .create(RemoteDataSource.class).baseUrl(BASE_URL).build();
 
         DataSourceFactory
                 .create(WeatherDataSource.class)

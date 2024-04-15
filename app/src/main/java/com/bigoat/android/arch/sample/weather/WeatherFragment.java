@@ -5,6 +5,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.bigoat.android.arch.BaseFragment;
+import com.bigoat.android.arch.datasource.DataSource;
 import com.bigoat.android.arch.sample.data.Location;
 import com.bigoat.android.arch.sample.databinding.WeatherFragmentBinding;
 import com.bigoat.android.arch.sample.main.MainActivity;
