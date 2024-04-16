@@ -24,18 +24,15 @@ public class MainViewModel extends BaseViewModel<WeatherDataSource> {
     public int int2;
 
     @AutoArg
-    public BaseLiveData<String> obj;
+    public Location vmw;
 
     @AutoArg
     public String hello;
 
-    @AutoArg
-    public Location vm2;
-
     @Override
     protected void myCreate() {
-        log("string=%s, int2=%d, obj=%s", string, int2, obj);
-        log("hello=%s, vm2=%s", hello, vm2);
+        log("string=%s, int2=%d ", string, int2);
+        log("hello=%s, vm2=", hello);
 
         city.observeForever(this::cityLookup);
     }

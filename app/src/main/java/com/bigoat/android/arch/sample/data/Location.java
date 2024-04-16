@@ -17,7 +17,7 @@ package com.bigoat.android.arch.sample.data;
  *       "fxLink":"https://www.qweather.com/weather/beijing-101010100.html"
  *     }
  */
-public class Location {
+public class Location implements java.io.Serializable{
     public String name;
     public String id;
     public String lat;

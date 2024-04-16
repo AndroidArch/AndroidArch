@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import com.bigoat.android.arch.AutoArg;
 import com.bigoat.android.arch.BaseActivity;
 import com.bigoat.android.arch.BaseLiveData;
+import com.bigoat.android.arch.sample.data.Location;
 import com.bigoat.android.arch.sample.databinding.MainActivityBinding;
 
 public class MainActivity extends BaseActivity<MainActivityBinding, MainViewModel> {
@@ -16,19 +17,16 @@ public class MainActivity extends BaseActivity<MainActivityBinding, MainViewMode
     @AutoArg
     public Integer int2;
 
-    @AutoArg
-    public BaseLiveData<String> obj;
 
     @Override
     protected void myCreate(@NonNull MainActivityBinding bind, @NonNull MainViewModel vm) {
 
-        log("string=%s, int2=%d, obj=%s", string, int2, obj);
+        log("string=%s, int2=%d", string, int2);
 
         bind.hello.setOnClickListener(view -> {
             startActivity(MainActivity.class)
                     .with("string", "string")
                     .with("int2", 123)
-                    .with("obj", new BaseLiveData<String>("obj"))
                     .go();
         });
 
