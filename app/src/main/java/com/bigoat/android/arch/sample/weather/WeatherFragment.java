@@ -23,7 +23,6 @@ public class WeatherFragment extends BaseFragment<WeatherFragmentBinding, Weathe
             public void onClick(View view) {
                 startActivity(MainActivity.class)
                         .with("hello", "hello")
-                        .with("vm2", new Location())
                         .go();
             }
         });
