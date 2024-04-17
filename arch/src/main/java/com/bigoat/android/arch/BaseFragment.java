@@ -21,7 +21,7 @@ public abstract class BaseFragment<Binding extends ViewDataBinding, ViewModel ex
     protected Binding bind;
     protected ViewModel vm;
 
-    private Bundle bundle;
+    private final Bundle bundle = new Bundle();
     protected Intent intent;
 
     protected abstract void myCreate(@NonNull Binding bind, @NonNull ViewModel vm);
@@ -53,8 +53,6 @@ public abstract class BaseFragment<Binding extends ViewDataBinding, ViewModel ex
     }
 
     public BaseFragment<Binding, ViewModel> with(@NonNull String key, @NonNull Object value) {
-        if (bundle == null) bundle = new Bundle();
-
         Utils.putBundleValue(bundle, key, value);
 
         return this;
