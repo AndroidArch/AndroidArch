@@ -1,5 +1,6 @@
 plugins {
     id("com.android.library")
+    id("com.vanniktech.maven.publish") version "0.28.0"
 }
 
 android {
@@ -34,4 +35,8 @@ android {
 dependencies {
     compileOnly("androidx.appcompat:appcompat:1.6.1")
     compileOnly("com.squareup.retrofit2:retrofit:2.11.0")
+}
+
+mavenPublishing {
+    signAllPublications()
 }
