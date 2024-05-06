@@ -6,15 +6,18 @@ import com.bigoat.android.arch.datasource.DataSource;
 import com.bigoat.android.arch.sample.data.DataCallback;
 import com.bigoat.android.arch.sample.data.Location;
 import com.bigoat.android.arch.sample.data.WeatherDataSource;
+import com.bigoat.android.arch.sample.my.MyViewModel;
 
 import java.util.List;
 
-public class WeatherViewModel extends BaseViewModel<WeatherDataSource> {
+public class WeatherViewModel extends MyViewModel {
 
     public BaseLiveData<String> location = new BaseLiveData<>("XXXXX");
 
     @Override
     protected void myCreate() {
+        log("WeatherViewModel dataSource=%b", dataSource==null);
+
         dataSource.cityLookup("guiyang").enqueue(new DataCallback<List<Location>>() {
             @Override
             public void onSucceed(List<Location> result) {

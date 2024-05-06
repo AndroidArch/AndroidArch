@@ -10,8 +10,10 @@ import com.bigoat.android.arch.BaseActivity;
 import com.bigoat.android.arch.BaseLiveData;
 import com.bigoat.android.arch.sample.data.Location;
 import com.bigoat.android.arch.sample.databinding.MainActivityBinding;
+import com.bigoat.android.arch.sample.my.MyActivity;
+import com.bigoat.android.arch.sample.my.MyViewModel;
 
-public class MainActivity extends BaseActivity<MainActivityBinding, MainViewModel> {
+public class MainActivity extends MyActivity<MainActivityBinding, MainViewModel> {
     @AutoArg
     public String string;
     @AutoArg
@@ -32,5 +34,4 @@ public class MainActivity extends BaseActivity<MainActivityBinding, MainViewMode
 
         bind.setVm(vm);
     }
-
 }

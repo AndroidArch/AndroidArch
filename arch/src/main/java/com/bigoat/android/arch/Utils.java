@@ -52,6 +52,27 @@ public final class Utils {
         return genericClass;
     }
 
+    public static <T> Class<T> getGenericTypeDeep(Class<?> clazz, int index) {
+        Type type = clazz.getGenericSuperclass();
+        if (!(type instanceof ParameterizedType)) {
+            Class<?> superClass = clazz.getSuperclass();
+            if (superClass == null) {
+                throw new IllegalArgumentException("Class " + clazz.getSimpleName() + " is not parameterized");
+            }
+            type = superClass.getGenericSuperclass();
+        }
+
+        Type[] typeArguments = ((ParameterizedType) type).getActualTypeArguments();
+        if (index < 0 || index >= typeArguments.length) {
+            throw new IllegalArgumentException("Index " + index + " is out of bounds");
+        }
+
+        @SuppressWarnings("unchecked")
+        Class<T> genericClass = (Class<T>) typeArguments[index];
+        return genericClass;
+    }
+
+
     public static void injectBundle(Object target, Bundle bundle, Class<? extends Annotation> annotationType) {
         if (target == null || bundle == null || annotationType == null) {
             return;

@@ -1,20 +1,14 @@
 package com.bigoat.android.arch.sample.main;
 
-import androidx.lifecycle.Observer;
-
 import com.bigoat.android.arch.AutoArg;
 import com.bigoat.android.arch.BaseLiveData;
-import com.bigoat.android.arch.BaseViewModel;
-import com.bigoat.android.arch.datasource.DataSourceCallback;
 import com.bigoat.android.arch.sample.data.DataCallback;
 import com.bigoat.android.arch.sample.data.Location;
-import com.bigoat.android.arch.sample.data.Result;
-import com.bigoat.android.arch.sample.data.WeatherDataSource;
-import com.bigoat.android.arch.sample.weather.WeatherViewModel;
+import com.bigoat.android.arch.sample.my.MyViewModel;
 
 import java.util.List;
 
-public class MainViewModel extends BaseViewModel<WeatherDataSource> {
+public class MainViewModel extends MyViewModel {
     public BaseLiveData<String> name = new BaseLiveData<>("姓名");
     public BaseLiveData<String> city = new BaseLiveData<>();
 
@@ -31,6 +25,8 @@ public class MainViewModel extends BaseViewModel<WeatherDataSource> {
 
     @Override
     protected void myCreate() {
+        log("MainViewModel dataSource=%b", dataSource==null);
+
         log("string=%s, int2=%d ", string, int2);
         log("hello=%s, vm2=", hello);
 
@@ -38,6 +34,13 @@ public class MainViewModel extends BaseViewModel<WeatherDataSource> {
     }
 
     private void cityLookup(String location) {
+        log("dataSource=%b", dataSource==null);
+        log("location=%s", location);
+
+        if (dataSource == null) {
+            name.value("dataSource is null");
+            return;
+        }
         dataSource.cityLookup(location).enqueue(new DataCallback<List<Location>>() {
             @Override
             public void onSucceed(List<Location> result) {

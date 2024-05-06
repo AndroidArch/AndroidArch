@@ -18,7 +18,7 @@ public abstract class BaseViewModel<DataSource extends com.bigoat.android.arch.d
 
     protected DataSource createDataSource() {
         try {
-            return DataSourceFactory.get(Utils.getGenericType(getClass(), 0));
+            return DataSourceFactory.get(Utils.getGenericTypeDeep(getClass(), 0));
         } catch (Exception e) {
             loge("Please configure the correct generic parameters, eg: MyViewModel extends BaseViewModel<?>");
         }
