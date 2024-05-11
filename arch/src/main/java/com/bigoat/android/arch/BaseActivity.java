@@ -14,7 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.lang.reflect.Method;
 
-public abstract class BaseActivity<Binding extends ViewDataBinding, ViewModel extends BaseViewModel<?>> extends AppCompatActivity implements Logger {
+public abstract class BaseActivity<Binding extends ViewDataBinding, ViewModel extends BaseViewModel> extends AppCompatActivity implements Logger {
     protected String tag;
     protected Binding bind;
     protected ViewModel vm;
